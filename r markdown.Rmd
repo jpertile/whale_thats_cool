@@ -10,8 +10,27 @@ valpraiso <- read_xlsx("valpraiso.xlsx")
 
 # need install.packages("janitor")
 # changes first row to column names
-valpraiso <- janitor::row_to_names(valpraiso, 1)
+valpraiso <- janitor::row_to_names(valpraiso, 1) 
 ```
 
+```{r exploring-count}
+valpraiso %>% count(Species)
+
+#appears that right whales are the most seen in the south
+```
+
+```{r converting-to-numeric}
+
+
+valpraiso <- valpraiso %>% 
+  mutate(Lon = as.numeric(Lon,  options(digits=5)), #make five digits)
+         Lat = as.numeric(Lat,  options(digits=5))) 
+```
+
+
+```{r latitude}
+ggplot(valpraiso, aes(Lon, Lat)) +
+  geom_point()
+```
 
 
