@@ -57,8 +57,11 @@ points(valpraiso$Lon, valpraiso$Lat, col='red', cex=0.001)
 library(maptools)
 ## Checking rgeos availability: TRUE
 data(wrld_simpl)
-plot(wrld_simpl, xlim=c(-180,180), ylim=c(-70,-30), axes=TRUE, 
+plot(wrld_simpl, xlim=c(-50, -40), ylim=c(-60,-30), axes=TRUE, 
      col="light yellow")
+
+#zoomed in a bit on Argentina
+
 # restore the box around the map
 box()
 # add the points
