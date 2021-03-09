@@ -5,6 +5,7 @@ output:
   html_document: default
 ---
 
+
 ```{r loading-valpraiso}
 valpraiso <- read_xlsx("valpraiso.xlsx")
 
@@ -20,13 +21,9 @@ valpraiso %>% count(Species)
 
 right_whales <- valpraiso %>%
   filter(Species == "Right")
-
-right_whales
 ```
 
 ```{r converting-to-numeric}
-
-
 valpraiso <- valpraiso %>% 
   mutate(Lon = as.numeric(Lon,  options(digits=5)), #make five digits)
          Lat = as.numeric(Lat,  options(digits=5))) 
@@ -36,6 +33,8 @@ valpraiso <- valpraiso %>%
 ```{r latitude-longitude}
 ggplot(valpraiso, aes(x = Lon, y = Lat, color = Species)) +
   geom_point()
+
+#this doesn't make sense to use
 ```
 
 ```{r map?}
@@ -60,7 +59,7 @@ data(wrld_simpl)
 plot(wrld_simpl, xlim=c(-50, -40), ylim=c(-60,-30), axes=TRUE, 
      col="light yellow")
 
-#zoomed in a bit on Argentina
+#zoomed in a bit on Argentina and right whales
 
 # restore the box around the map
 box()
