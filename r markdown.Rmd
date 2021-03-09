@@ -3,6 +3,14 @@ title: "Whale That's Cool"
 output: html_document
 ---
 
+```{r loading-valpraiso}
+valpraiso <- read_xlsx("valpraiso.xlsx")
+
+# need install.packages("janitor")
+#changes first row to column names
+valpraiso <- janitor::row_to_names(valpraiso, 1)
+```
+
 ```{r loading-dismo}
 # loads the dismo library
 library(dismo)
@@ -10,6 +18,10 @@ file <- paste0(system.file(package="dismo"), "/ex/bradypus.csv")
 # this is the file we will use:
 file
 ## [1] "C:/soft/R/R-3.6.0/library/dismo/ex/bradypus.csv"
+```
+
+```{r}
+bradypus <- read.table(file,  header=TRUE,  sep=",")
 ```
 
 
