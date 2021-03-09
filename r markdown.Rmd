@@ -17,6 +17,11 @@ valpraiso <- janitor::row_to_names(valpraiso, 1)
 valpraiso %>% count(Species)
 
 #appears that right whales are the most seen in the south
+
+right_whales <- valpraiso %>%
+  filter(Species == "Right")
+
+right_whales
 ```
 
 ```{r converting-to-numeric}
@@ -28,9 +33,36 @@ valpraiso <- valpraiso %>%
 ```
 
 
-```{r latitude}
+```{r latitude-longitude}
 ggplot(valpraiso, aes(x = Lon, y = Lat, color = Species)) +
   geom_point()
 ```
 
+```{r map?}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-180,180), ylim=c(-70,-30), axes=TRUE, 
+     col="light yellow")
+# restore the box around the map
+box()
+# add the points
+points(valpraiso$Lon, valpraiso$Lat, col='orange', pch=20, cex=0.75)
+# plot points again to add a border, for better visibility
+points(valpraiso$Lon, valpraiso$Lat, col='red', cex=0.75)
+```
 
+
+```{r map-right-whale?}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-180,180), ylim=c(-70,-30), axes=TRUE, 
+     col="light yellow")
+# restore the box around the map
+box()
+# add the points
+points(right_whales$Lon, right_whales$Lat, col='orange', pch=20, cex=0.75)
+# plot points again to add a border, for better visibility
+points(right_whales$Lon, right_whales$Lat, col='red', cex=0.75)
+```
