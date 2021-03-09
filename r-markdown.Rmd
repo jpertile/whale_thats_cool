@@ -102,4 +102,26 @@ southatl %>%
 
 There are more Sperm than Right Whales in this region, but they are comparable.
 
+```{r right-whales-sa}
+rw_sa <- southatl %>%
+  filter(Species == "Right")
+```
+
+
+```{r map-right-whale-sa}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+
+#zoomed in a bit on Argentina and right whales
+
+# restore the box around the map
+box()
+# add the points
+points(rw_sa$Lon, rw_sa$Lat, col='orange', pch=20, cex=0.01)
+# plot points again to add a border, for better visibility
+points(rw_sa$Lon, rw_sa$Lat, col='red', cex=0.01)
+```
 
