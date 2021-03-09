@@ -69,7 +69,7 @@ points(valpraiso$Lon, valpraiso$Lat, col='red', cex=0.001)
 library(maptools)
 ## Checking rgeos availability: TRUE
 data(wrld_simpl)
-plot(wrld_simpl, xlim=c(-85, 5), ylim=c(-60,-30), axes=TRUE, 
+plot(wrld_simpl, xlim=c(-85, 35), ylim=c(-65,-25), axes=TRUE, 
      col="light yellow", xlab = "Longitude", ylab = "Latitude")
 
 #zoomed in a bit on Argentina and right whales
@@ -81,5 +81,25 @@ points(right_whales$Lon, right_whales$Lat, col='orange', pch=20, cex=0.2)
 # plot points again to add a border, for better visibility
 points(right_whales$Lon, right_whales$Lat, col='red', cex=0.2)
 ```
+
+
+ok what if i want the entire south atlantic
+
+```{r south-atlantic}
+library(readxl)
+southatl <- read_excel("southatlantic.xlsx")
+
+southatl <- southatl %>%
+    mutate(Lon = as.numeric(Lon,  options(digits=5)), #make five digits)
+         Lat = as.numeric(Lat,  options(digits=5))) 
+
+```
+
+```{r}
+southatl %>%
+  count(Species)
+```
+
+There are more Sperm than Right Whales in this region, but they are comparable.
 
 
