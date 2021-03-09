@@ -29,7 +29,7 @@ valpraiso <- valpraiso %>%
 
 
 ```{r latitude}
-ggplot(valpraiso, aes(Lon, Lat)) +
+ggplot(valpraiso, aes(x = Lon, y = Lat, color = Species)) +
   geom_point()
 ```
 
