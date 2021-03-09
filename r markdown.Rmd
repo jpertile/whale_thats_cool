@@ -47,9 +47,9 @@ plot(wrld_simpl, xlim=c(-180,180), ylim=c(-70,-30), axes=TRUE,
 # restore the box around the map
 box()
 # add the points
-points(valpraiso$Lon, valpraiso$Lat, col='orange', pch=20, cex=0.75)
+points(valpraiso$Lon, valpraiso$Lat, col='orange', pch=20, cex=0.001)
 # plot points again to add a border, for better visibility
-points(valpraiso$Lon, valpraiso$Lat, col='red', cex=0.75)
+points(valpraiso$Lon, valpraiso$Lat, col='red', cex=0.001)
 ```
 
 
@@ -62,7 +62,8 @@ plot(wrld_simpl, xlim=c(-180,180), ylim=c(-70,-30), axes=TRUE,
 # restore the box around the map
 box()
 # add the points
-points(right_whales$Lon, right_whales$Lat, col='orange', pch=20, cex=0.75)
+points(right_whales$Lon, right_whales$Lat, col='orange', pch=20, cex=0.2)
 # plot points again to add a border, for better visibility
-points(right_whales$Lon, right_whales$Lat, col='red', cex=0.75)
+points(right_whales$Lon, right_whales$Lat, col='red', cex=0.2)
 ```
+
