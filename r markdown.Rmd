@@ -5,6 +5,18 @@ output:
   html_document: default
 ---
 
+```{r packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(broom)
+library(janitor)
+library(readxl)
+library(xlsx)
+library(raster)
+library(rgdal)
+library(rJava)
+```
+
+
 
 ```{r loading-valpraiso}
 valpraiso <- read_xlsx("valpraiso.xlsx")
