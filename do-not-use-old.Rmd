@@ -1,0 +1,83 @@
+---
+title: "Whale That's Cool"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(broom)
+library(janitor)
+library(readxl)
+library(xlsx)
+library(raster)
+library(rgdal)
+library(rJava)
+```
+
+
+
+```{r loading-valpraiso}
+valpraiso <- read_xlsx("valpraiso.xlsx")
+
+# need install.packages("janitor")
+# changes first row to column names
+valpraiso <- janitor::row_to_names(valpraiso, 1) 
+```
+
+```{r exploring-count}
+valpraiso %>% count(Species)
+
+#appears that right whales are the most seen in the south
+
+right_whales <- valpraiso %>%
+  filter(Species == "Right")
+```
+
+```{r converting-to-numeric}
+valpraiso <- valpraiso %>% 
+  mutate(Lon = as.numeric(Lon,  options(digits=5)), #make five digits)
+         Lat = as.numeric(Lat,  options(digits=5))) 
+```
+
+
+```{r latitude-longitude}
+ggplot(valpraiso, aes(x = Lon, y = Lat, color = Species)) +
+  geom_point()
+
+#this doesn't make sense to use
+```
+
+```{r map?}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-180,180), ylim=c(-70,-30), axes=TRUE, 
+     col="light yellow")
+# restore the box around the map
+box()
+# add the points
+points(valpraiso$Lon, valpraiso$Lat, col='orange', pch=20, cex=0.001)
+# plot points again to add a border, for better visibility
+points(valpraiso$Lon, valpraiso$Lat, col='red', cex=0.001)
+```
+
+
+```{r map-right-whale?}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-50, -40), ylim=c(-60,-30), axes=TRUE, 
+     col="light yellow")
+
+#zoomed in a bit on Argentina and right whales
+
+# restore the box around the map
+box()
+# add the points
+points(right_whales$Lon, right_whales$Lat, col='orange', pch=20, cex=0.2)
+# plot points again to add a border, for better visibility
+points(right_whales$Lon, right_whales$Lat, col='red', cex=0.2)
+```
+
