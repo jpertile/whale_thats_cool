@@ -83,7 +83,9 @@ points(right_whales$Lon, right_whales$Lat, col='red', cex=0.2)
 ```
 
 
-ok what if i want the entire south atlantic
+ok what if i want the entire south atlantic? not just south of valpraiso
+longitude: [-90.00, 30.00]
+latitude: [-180, 0.00]
 
 ```{r south-atlantic}
 library(readxl)
