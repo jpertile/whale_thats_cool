@@ -105,6 +105,12 @@ There are more Sperm than Right Whales in this region, but they are comparable.
 ```{r right-whales-sa}
 rw_sa <- southatl %>%
   filter(Species == "Right")
+
+sp_sa <- southatl %>%
+  filter(Species == "Sperm")
+
+absense_sa <- southatl %>% 
+  filter(Encounter == "NoEnc")
 ```
 
 
@@ -119,9 +125,26 @@ plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE,
 
 # restore the box around the map
 box()
+
 # add the points
-points(rw_sa$Lon, rw_sa$Lat, col='orange', pch=20, cex=0.01)
+points(absense_sa$Lon, absense_sa$Lat, col='black', pch=16, cex=0.0001)
 # plot points again to add a border, for better visibility
-points(rw_sa$Lon, rw_sa$Lat, col='red', cex=0.01)
+points(absense_sa$Lon, absense_sa$Lat, col='gray', cex=0.0001,)
+
+# add the points
+points(sp_sa$Lon, sp_sa$Lat, col='green', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(sp_sa$Lon, sp_sa$Lat, col='pale green', cex=0.0001)
+
+# add the points
+points(rw_sa$Lon, rw_sa$Lat, col='orange', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(rw_sa$Lon, rw_sa$Lat, col='red', cex=0.0001)
+
+#red is right
+#green is sperm
+#gray is absense
+
 ```
+
 
