@@ -131,7 +131,7 @@ box()
 # add the points
 points(absense_sa$Lon, absense_sa$Lat, col='black', pch=16, cex=0.0001)
 # plot points again to add a border, for better visibility
-points(absense_sa$Lon, absense_sa$Lat, col='gray', cex=0.0001,)
+points(absense_sa$Lon, absense_sa$Lat, col='dark blue', cex=0.0001,)
 
 # add the points
 points(sp_sa$Lon, sp_sa$Lat, col='green', pch=20, cex=0.0001)
@@ -148,5 +148,6 @@ points(rw_sa$Lon, rw_sa$Lat, col='red', cex=0.0001)
 #gray is absense
 
 ```
+
 
 
