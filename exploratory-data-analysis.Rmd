@@ -175,3 +175,31 @@ points(rw_sa$Lon, rw_sa$Lat, col='red', cex=0.0001)
 
 ```
 
+
+```{r map-sperm-whales-sa}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+
+#zoom in on south atlantic
+
+# restore the box around the map
+box()
+
+# add the points
+points(absense_sa$Lon, absense_sa$Lat, col='black', pch=16, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(absense_sa$Lon, absense_sa$Lat, col='dark blue', cex=0.0001,)
+
+# add the points
+points(sp_sa$Lon, sp_sa$Lat, col='green', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(sp_sa$Lon, sp_sa$Lat, col='pale green', cex=0.0001)
+
+
+#green is sperm
+#blue is absense
+```
+
