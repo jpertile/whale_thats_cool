@@ -14,6 +14,7 @@ library(readxl)
 library(xlsx)
 library(raster)
 library(rJava)
+library(dplyr)
 
 #add rgdal later
 ```
@@ -266,3 +267,37 @@ ggplot(data = sp_sa, mapping = aes(x = Year)) +
   geom_histogram()
 ```
 1820 - 1860 has the most data
+
+```{r month-histogram}
+ggplot(data = sp_sa, mapping = aes(x = Month)) +
+  geom_histogram(bins = 12)
+```
+
+```{r month-histogram}
+ggplot(data = absense_sa, mapping = aes(x = Month)) +
+  geom_histogram(bins = 12)
+```
+
+
+```{r percentages-joining}
+counts_sp <- sp_sa %>%
+  count(Month)
+
+counts_absense <- absense_sa %>%
+  count(Month)
+
+joined_count <- counts_sp %>%
+  inner_join(counts_absense, "Month")
+
+
+
+effort <- joined_count %>%
+  mutate(percent = n.x / n.y * 100)
+
+effort <- dplyr::select(effort, 1, 4)
+
+effort
+
+
+```
+
