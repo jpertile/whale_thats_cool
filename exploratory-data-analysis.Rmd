@@ -40,9 +40,6 @@ southatl %>%
 There are more Sperm than Right Whales in this region, but they are comparable.
 
 ```{r right-whales-sa}
-rw_sa <- southatl %>%
-  filter(Species == "Right")
-
 sp_sa <- southatl %>%
   filter(Species == "Sperm")
 
@@ -137,4 +134,17 @@ points(sp_sa$Lon, sp_sa$Lat, col='pale green', cex=0.0001)
 #green is sperm
 #blue is absense
 ```
+
+```{r count-month}
+sp_sa_szn <- sp_sa %>% 
+  mutate(Season = case_when(Month < 3.1 ~ "Summer",
+                           Month > 3.1 & Month < 6.1 ~ "Fall", 
+                           Month > 6.1 & Month < 9.1 ~ "Winter",
+                           Month > 9.1 ~ "Spring")) 
+
+sp_sa_szn %>%
+  count(Season)
+
+```
+
 
