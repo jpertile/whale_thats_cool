@@ -261,3 +261,8 @@ points(fall$Lon, fall$Lat, col='red', cex=0.0001)
 
 ```
 
+```{r year-histogram}
+ggplot(data = sp_sa, mapping = aes(x = Year)) +
+  geom_histogram()
+```
+1820 - 1860 has the most data
