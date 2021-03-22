@@ -148,3 +148,116 @@ sp_sa_szn %>%
 ```
 
 
+```{r making_season_datasets}
+spring <- sp_sa_szn %>%
+  filter(Season == "Spring")
+
+summer <- sp_sa_szn %>%
+  filter(Season == "Summer")
+
+fall <- sp_sa_szn %>%
+  filter(Season == "Fall")
+
+winter <- sp_sa_szn %>%
+  filter(Season == "Winter")
+```
+
+
+```{r mapping-seasons}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+
+#zoom in on south atlantic
+
+# restore the box around the map
+box()
+
+points(absense_sa$Lon, absense_sa$Lat, col='black', pch=16, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(absense_sa$Lon, absense_sa$Lat, col='black', cex=0.0001,)
+
+# add the points
+points(winter$Lon, winter$Lat, col='blue', pch=16, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(winter$Lon, winter$Lat, col='blue', cex=0.0001,)
+
+# add the points
+points(spring$Lon, spring$Lat, col='green', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(spring$Lon, spring$Lat, col='green', cex=0.0001)
+
+# add the points
+points(summer$Lon, summer$Lat, col='red', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(summer$Lon, summer$Lat, col='red', cex=0.0001)
+
+# add the points
+points(fall$Lon, fall$Lat, col='purple', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(fall$Lon, fall$Lat, col='purple', cex=0.0001)
+
+
+
+```
+
+
+```{r world}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+# add the points
+points(summer$Lon, summer$Lat, col='red', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(summer$Lon, summer$Lat, col='red', cex=0.0001)
+
+```
+
+```{r world-spr}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+# add the points
+points(spring$Lon, spring$Lat, col='green', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(spring$Lon, spring$Lat, col='green', cex=0.0001)
+
+```
+```{r mapping-winter}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+
+#zoom in on south atlantic
+
+# restore the box around the map
+box()
+
+# add the points
+points(winter$Lon, winter$Lat, col='blue', pch=16, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(winter$Lon, winter$Lat, col='blue', cex=0.0001,)
+
+```
+
+```{r world-fall}
+library(maptools)
+## Checking rgeos availability: TRUE
+data(wrld_simpl)
+plot(wrld_simpl, xlim=c(-90, 30), ylim=c(-60, 0), axes=TRUE, 
+     col="light yellow", xlab = "Longitude", ylab = "Latitude")
+# add the points
+points(fall$Lon, fall$Lat, col='red', pch=20, cex=0.0001)
+# plot points again to add a border, for better visibility
+points(fall$Lon, fall$Lat, col='red', cex=0.0001)
+
+```
+
